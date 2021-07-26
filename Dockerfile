@@ -4,7 +4,7 @@ ARG GH_TOKEN
 WORKDIR /app
 RUN git clone https://$GH_TOKEN@github.com/yildiz-online/retro-server.git
 
-FROM moussavdb/build-java-dependencies-arm64 as build
+FROM 3.8.1-jdk-11 as build
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
 WORKDIR /app
 COPY --from=clone /app/retro-server /app
