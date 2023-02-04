@@ -4,13 +4,13 @@ ARG GH_TOKEN
 WORKDIR /app
 RUN git clone https://$GH_TOKEN@github.com/yildiz-online/retro-server.git
 
-FROM maven:3.8.1-jdk-11 as build
+FROM moussavdb/build-java as build
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
 WORKDIR /app
 COPY --from=clone /app/retro-server /app
 RUN mvn package -DskipTests -Pbuild-assembly
 
-FROM moussavdb/runtime-java-arm64
+FROM moussavdb/runtime-java
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
 EXPOSE 8080
 WORKDIR /app
