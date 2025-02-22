@@ -8,7 +8,7 @@ FROM moussavdb/build-java:23 as build
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
 WORKDIR /app
 COPY --from=clone /app/retro-server /app
-RUN mvn package -DskipTests -Pbuild-assembly
+RUN mvn package spring-boot:repackage -DskipTests
 
 FROM moussavdb/runtime-java:lts
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
