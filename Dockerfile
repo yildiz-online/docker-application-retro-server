@@ -8,7 +8,7 @@ FROM moussavdb/build-java:sts as build
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
 WORKDIR /app
 COPY --from=clone /app/retro-server /app
-RUN mvn package spring-boot:repackage -DskipTests -s settings.xml
+RUN mvn package spring-boot:repackage -DskipTests -Dnexus_retro_password=$NEXUS_PASSWORD -s settings.xml
 
 FROM moussavdb/runtime-java:lts
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
