@@ -12,10 +12,10 @@ services:
 
 before_install:
   - mkdir -vp ~/.docker/cli-plugins/
-  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.26.1/buildx-v0.26.1.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.30.1/buildx-v0.30.1.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
   - chmod a+x ~/.docker/cli-plugins/docker-buildx
   
 script:
   - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
   - docker buildx create --use
-  - docker buildx build --build-arg NEXUS_PASSWORD=$NEXUS_PASSWORD --build-arg GH_TOKEN=$GH_TOKEN --push --platform linux/arm64/v8 --tag moussavdb/application-retro-service:250828-2 .
+  - docker buildx build --build-arg NEXUS_PASSWORD=$NEXUS_PASSWORD --build-arg GH_TOKEN=$GH_TOKEN --push --platform linux/arm64/v8 --tag moussavdb/application-retro-service:251217-0 .
